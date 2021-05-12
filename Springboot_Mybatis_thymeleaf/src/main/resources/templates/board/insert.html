@@ -9,7 +9,48 @@
 <div th:replace="./fragments/default :: nav"></div>
 <div th:replace="./fragments/default :: jumbo"></div>
 
+<div class="container">
+		<h2>${board}form</h2>
+		<form action="#" th:action="@{./insert}" method="post" id="frm"
+			enctype="multipart/form-data">
+			<div class="form-group">
+				<label for="writer">Writer:</label> <input type="text"
+					class="form-control"
+					id="writer" name="writer">
+			</div>
+			<div class="form-group">
+				<label for="title">Title:</label> <input type="text"
+					class="form-control myCheck" id="title" name="title">
+			</div>
 
+			<div class="form-group">
+				<label for="contents">Contents:</label>
+				<textarea class="form-control myCheck" rows="5" id="contents"
+					name="contents"></textarea>
+			</div>
+
+			<input type="button" id="add" value="ADD"
+				class="btn btn-info myCheck">
+				
+			<div id="files" title="0"></div>
+
+
+			<input type="submit" id="btn" value="WRITE"
+				class="btn btn-primary myCheck">
+		</form>
+	</div>
+
+	<div id="sample">
+		
+			<div class="input-group">
+			
+				<div class="input-group-append delete">
+					<input class="btn btn-outline-secondary" id="inputGroupFileAddon04"
+						type="button" value="DELETE">
+				</div>
+			</div>
+		
+	</div>
 
 
 <div th:replace="./fragments/default :: footer"></div>

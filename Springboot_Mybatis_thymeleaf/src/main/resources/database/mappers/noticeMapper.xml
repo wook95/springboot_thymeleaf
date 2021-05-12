@@ -6,11 +6,16 @@
 <mapper namespace="com.iu.ss1.board.notice.NoticeMapper">
 
 
-	<select id="getList" resultType="NoticeVO">
-	 	select * from
+	<select id="getList" resultType="NoticeVO" parameterType="Pager">
+<!-- 	 	select * from
 		(select rownum R, N.* from
 		(select * from notice order by num desc) N )
-		where R between 1 and 10
+		where R between 1 and 10  오라클식-->
+		
+		select * from notice order by num desc
+		limit #{startRow},#{perPage}
+		<!-- limit 시작index(0부터 시작),갯수 -->
+	
 	</select>
 	
 	
@@ -19,6 +24,19 @@
     select * from notice where num=#{num}
     
     </select>
+    
+    
+    
+    <select id="getTotalCount" parameterType="Pager" resultType="java.lang.Long">
+    	select count(num) from notice
+    </select>
+    
+    
+    
+    
+    <insert id="setInsert">
+    insert into notice values(#{num},#{title},#{writer},#{contents},now(),0);
+    </insert>
 
 
 </mapper>

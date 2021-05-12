@@ -18,18 +18,33 @@ class NoticeMapperTest {
 	private NoticeMapper noticeMapper;
 	
 	
+	
+//	void test() throws Exception{
+//		
+//		List<BoardVO> ar = noticeMapper.getList();
+//		
+//		
+//		for(BoardVO boardVO:ar) {
+//			System.out.println(boardVO.toString());
+//		}
+//		
+//		
+//		assertNotEquals(0, ar.size());
+//		
+//	}
 	@Test
-	void test() throws Exception{
+	void setInsertTest() throws Exception{
 		
-		List<BoardVO> ar = noticeMapper.getList();
-		
-		
-		for(BoardVO boardVO:ar) {
-			System.out.println(boardVO.toString());
+		for(int i=0;i<100;i++) {
+			BoardVO vo = new BoardVO();
+			vo.setTitle("tilte"+i);
+			vo.setContents("contents"+i);
+			vo.setWriter("writer"+i);
+			noticeMapper.setInsert(vo);
+			Thread.sleep(50);
 		}
 		
-		
-		assertNotEquals(0, ar.size());
+		System.out.println("finish");
 		
 	}
 

@@ -54,6 +54,23 @@
 <a class="btn btn-primary" href="#" role="button" th:href="@{|/${board}/insert|}" style="margin-bottom: 5px">write</a>
   
   
+  
+  
+  <!-- 페이지 밑 번호로 이동할수 있는 블럭  -->
+ <div class="container d-flex justify-content-center">
+  <ul class="pagination">
+    <li class="page-item">
+    	<a class="page-link" th:if="${pager.pre}" href="#" th:href="@{./list(curPage=${pager.startNum}-1)}">Previous</a>
+    	<span class="page-link" th:unless="${pager.pre}">Previous</span>
+    </li>
+    <li class="page-item" th:each="i : ${#numbers.sequence(pager.startNum,pager.lastNum)}"><a class="page-link" th:text="${i}" href="#" th:href="@{./list(curPage=${i})}">1</a></li>
+    <li class="page-item" th:if="${pager.next}"><a class="page-link" href="#" th:href="@{./list(curPage=${pager.lastNum}+1)}">Next</a></li>
+  </ul>
+</div>
+  
+  
+  
+  
 <div th:replace="./fragments/default :: footer"></div>
 </div>
 </body>

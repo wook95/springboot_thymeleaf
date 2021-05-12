@@ -8,6 +8,7 @@
  <typeAliases>
  	<typeAlias type="com.iu.ss1.board.BoardVO" alias="BoardVO"/>
  	<typeAlias type="com.iu.ss1.board.notice.NoticeVO" alias="NoticeVO"/>
+ 	<typeAlias type="com.iu.ss1.util.Pager" alias="Pager"/>
  </typeAliases>
   
   </configuration>

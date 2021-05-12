@@ -29,7 +29,7 @@ public class BoardVO {
 	private String title;
 	private String writer;
 	private String contents;
-	private Date regdate;
+	private Date regDate;
 	private Long hit;
 	
 	

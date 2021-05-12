@@ -10,8 +10,51 @@
 <div th:replace="./fragments/default :: nav"></div>
 <div th:replace="./fragments/default :: jumbo"></div>
 
+ 
+ <div class="container">
  <h1 >[[${board}]] list</h1>
-<div th:replace="./fragments/default :: footer"></div>
 
+<table class="table">
+  <thead class="table-dark">
+    <tr>
+    	<th scope="col">num</th>
+    	<th scope="col">title</th>
+    	<th scope="col">writer</th>
+    	<th scope="col">date</th>
+    	<th scope="col">hit</th> 
+
+    	<th scope="col">idx</th>
+    	<th scope="col">count</th>
+    	<th scope="col">size</th>
+    	<th scope="col">even</th>
+    	<th scope="col">odd</th>
+     </tr>
+  </thead>
+  <tbody>
+  	 	<tr th:each="vo, state : ${list}">
+   			<th scope="row" th:text="${vo.num}">1</th>
+   			 <td><a href="#" th:href="@{select(num=${vo.num})}" th:text="${vo.title}">mark</a></td>
+   			<!-- <td><a href="#">[[${vo.title}]]</a></td> -->
+   			<td th:text="${vo.writer}">	</td>
+   	 		 <td th:text="${vo.regDate}">	</td> 
+   			<td th:text="${vo.hit}">	</td>  
+   			<td th:text="${state.index}">	</td>
+   		 	<td th:text="${state.count}">	</td> <!--  반복의 총 갯수  -->
+   			 <td th:text="${state.size}">	</td>
+   			<td th:text="${state.even}">	</td> <!-- 현재 반복의 짝  -->
+   			<td th:text="${state.odd}">	</td>  <!-- 현재 반복의 홀수 여부 -->
+ 
+   			
+   			
+	   </tr>
+	 
+  </tbody>
+</table>
+ 
+<a class="btn btn-primary" href="#" role="button" th:href="@{|/${board}/insert|}" style="margin-bottom: 5px">write</a>
+  
+  
+<div th:replace="./fragments/default :: footer"></div>
+</div>
 </body>
 </html>

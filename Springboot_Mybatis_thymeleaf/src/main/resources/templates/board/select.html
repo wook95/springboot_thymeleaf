@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="./fragments/default :: head(|${board} select|)">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<div th:replace="./fragments/default :: nav"></div>
+<div th:replace="./fragments/default :: jumbo"></div>
+
+
+
+
+
+
+<table class="table">
+  <thead class="table-dark">
+    <tr>
+    	<th scope="col">num</th>
+    	<th scope="col">title</th>
+    	<th scope="col">writer</th>
+    	<th scope="col">date</th>
+    	<th scope="col">hit</th> 
+
+   
+     </tr>
+  </thead>
+  <tbody>
+  	 	<tr>
+   			<th scope="row" th:text="${vo.num}">1</th>
+   			 <td th:text="${vo.title}"></td>
+   			<!-- <td><a href="#">[[${vo.title}]]</a></td> -->
+   			<td th:text="${vo.writer}">	</td>
+   	 		 <td th:text="${vo.regDate}">	</td> 
+   			<td th:text="${vo.hit}">	</td>  
+   			
+   			
+	   </tr>
+	 
+  </tbody>
+</table>
+ 
+
+<input type="button" value="modify">
+<input type="button" value="delete">
+
+
+
+
+<div th:replace="./fragments/default :: footer"></div>
+
+
+</body>
+</html>

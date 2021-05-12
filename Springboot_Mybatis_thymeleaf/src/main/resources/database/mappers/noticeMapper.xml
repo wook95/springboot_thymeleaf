@@ -6,14 +6,43 @@
 <mapper namespace="com.iu.ss1.board.notice.NoticeMapper">
 
 
+	<sql id="searcher">
+		<where>
+				<choose>		
+					<when test="kind=='Writer'">
+						writer like concat('%',#{search},'%')
+					</when>
+					
+					<when test="kind=='contents'">
+						contents like concat('%',#{search},'%')
+					</when>
+			
+					<otherwise>
+						title like concat('%',#{search},'%')
+					</otherwise>
+			
+				</choose>
+			</where>
+	</sql>
+
+
+
+
+
 	<select id="getList" resultType="NoticeVO" parameterType="Pager">
 <!-- 	 	select * from
 		(select rownum R, N.* from
 		(select * from notice order by num desc) N )
 		where R between 1 and 10  오라클식-->
 		
-		select * from notice order by num desc
+		
+		
+		select * from notice
+		<include refid="searcher"></include>
+		order by num desc
 		limit #{startRow},#{perPage}
+<!-- 		select * from notice order by num desc
+		limit #{startRow},#{perPage} -->
 		<!-- limit 시작index(0부터 시작),갯수 -->
 	
 	</select>
@@ -29,6 +58,7 @@
     
     <select id="getTotalCount" parameterType="Pager" resultType="java.lang.Long">
     	select count(num) from notice
+    	<include refid="searcher"></include>
     </select>
     
     
@@ -37,6 +67,15 @@
     <insert id="setInsert">
     insert into notice values(#{num},#{title},#{writer},#{contents},now(),0);
     </insert>
+
+
+
+
+
+
+
+
+
 
 
 </mapper>

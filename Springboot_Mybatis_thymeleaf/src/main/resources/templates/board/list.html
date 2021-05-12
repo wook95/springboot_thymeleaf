@@ -51,7 +51,54 @@
   </tbody>
 </table>
  
+ 
+ <!-- 검색 form -->
+				<div class=" d-flex justify-content-start">
+			<div class="input-group align-items-center">
+				<form id="frm" th:action="@{list}" class="form-inline">
+					<input type="hidden" name="curPage" value="1" id="curPage">
+					<div class="input-group-prepend">
+						<select class="form-control" name="kind" id="kind"
+							th:value="${pager.kind}">
+							<option class="sel"
+								th:selected="${pager.kind}== 'Title'?true:false">Title</option>
+							<option class="sel"
+								th:selected="${pager.kind}=='Contents'?true:false">Contents</option>
+							<option class="sel"
+								th:selected="${pager.kind}=='Writer'?true:false">Writer</option>
+						</select>
+					</div>
+					<input type="text" class="form-control" name="search" id="search"
+						th:value="${pager.search}" placeholder="">
+					<div class="input-group-append">
+						<button class="btn btn-success" type="submit">Search</button>
+					</div>
+				</form>
+			</div>
+		</div>
+		
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 <a class="btn btn-primary" href="#" role="button" th:href="@{|/${board}/insert|}" style="margin-bottom: 5px">write</a>
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   
@@ -59,19 +106,41 @@
   <!-- 페이지 밑 번호로 이동할수 있는 블럭  -->
  <div class="container d-flex justify-content-center">
   <ul class="pagination">
+  
+  
     <li class="page-item">
-    	<a class="page-link" th:if="${pager.pre}" href="#" th:href="@{./list(curPage=${pager.startNum}-1)}">Previous</a>
+    	<a class="page-link pager" th:if="${pager.pre}" href="#" th:title="${pager.startNum-1}">Previous</a>
+    <!--  th:href="@{./list(curPage=${pager.startNum}-1)}"-->
     	<span class="page-link" th:unless="${pager.pre}">Previous</span>
     </li>
-    <li class="page-item" th:each="i : ${#numbers.sequence(pager.startNum,pager.lastNum)}"><a class="page-link" th:text="${i}" href="#" th:href="@{./list(curPage=${i})}">1</a></li>
-    <li class="page-item" th:if="${pager.next}"><a class="page-link" href="#" th:href="@{./list(curPage=${pager.lastNum}+1)}">Next</a></li>
+    
+    
+    <li class="page-item" th:each="i : ${#numbers.sequence(pager.startNum,pager.lastNum)}">
+    <a class="page-link pager" th:text="${i}" href="#" th:title="${i}">1</a>
+    <!-- th:href="@{./list(curPage=${i})}" -->
+    </li>
+    
+    
+    
+    <li class="page-item" th:if="${pager.next}">
+    <a class="page-link pager" href="#"  th:title="${pager.lastNum+1}">Next</a>
+    </li>
+    <!--  th:href="@{./list(curPage=${pager.lastNum}+1)}" -->
   </ul>
 </div>
   
   
   
   
+  
+  
+  
+  
 <div th:replace="./fragments/default :: footer"></div>
 </div>
+
+
+<script type="text/javascript" th:src="@{/js/boardSearch.js}"></script>
+
 </body>
 </html>

@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.iu.ss1.board.BoardVO;
 import com.iu.ss1.util.Pager;
@@ -39,15 +40,55 @@ public class NoticeController {
 	}
 	
 	@GetMapping("/notice/insert")
-	public String setInsert()throws Exception{
-		return "board/insert";
+	public String setInsert(Model model)throws Exception{
+		model.addAttribute("vo", new BoardVO());
+		model.addAttribute("action","insert");
+		return "board/form";
 	}
 	
 	@PostMapping("/notice/insert")
-	public String setInsert(BoardVO boardVO)throws Exception{
-		int result = noticeService.setInsert(boardVO);
+	public String setInsert(BoardVO boardVO, MultipartFile[] files)throws Exception{
+		int result = noticeService.setInsert(boardVO,files);
+		
+//		System.out.println(files.length);
+//		for(MultipartFile f : files) {
+//			System.out.println(f.getOriginalFilename());
+//		}
+		
 		return "redirect:./list";
 	}
+	
+	
+	@GetMapping("/notice/update")
+	public String setUpdate(BoardVO boardVO,Model model)throws Exception{
+		
+		//번호만 넘어오면(boardVO) 수정한 내용이 뭔지 모른다 ,,,,, 그래서!
+		//select를 해줘야 하는것! ! !
+		boardVO = noticeService.getSelect(boardVO);
+		model.addAttribute("vo", boardVO);
+		model.addAttribute("action","update");
+		return "board/form";
+	}
+	
+	@PostMapping("/notice/update")
+	public String setUpdate(BoardVO boardVO)throws Exception{
+		int result=noticeService.setUpdate(boardVO);
+		return "redirect:./list";
+	}
+	
+	@GetMapping("notice/delete")
+	public String setDelete(BoardVO boardVO)throws Exception{
+		
+		int result = noticeService.setDelete(boardVO);
+		return "redirect:./list";
+		
+	}
+	
+	
+	
+	
+	
+	
 	
 	
 	
@@ -56,6 +97,7 @@ public class NoticeController {
 	public String getBoard() {
 		return "notice";
 	}
+	
 	
 	
 }

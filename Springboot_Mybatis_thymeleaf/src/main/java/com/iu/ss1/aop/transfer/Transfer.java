@@ -6,9 +6,10 @@ import org.springframework.stereotype.Component;
 public class Transfer {
 
 	
-	public void takeSubWay() {
+	public String takeSubWay() {
 		System.out.println("지하철 탑승");
 		System.out.println("넷플 보기");
+		return "7호선";
 	}
 	
 	public void takeBus() {

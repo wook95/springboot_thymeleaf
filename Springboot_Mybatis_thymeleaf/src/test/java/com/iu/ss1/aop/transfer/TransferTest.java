@@ -16,7 +16,20 @@ class TransferTest {
 	
 	@Test
 	void test() {
-		fail("Not yet implemented");
+		
+		//oop
+//		card.checkCard();
+//		transfer.takeBus();
+//		card.checkCard();
+//		card.checkCard();
+//		transfer.takeSubWay();
+//		card.checkCard();
+
+		//aop 관심 있는애들 실행
+		//부수적인 애들 자동으로 실행
+		transfer.takeBus();
+		transfer.takeSubWay();
+		
 	}
 
 	

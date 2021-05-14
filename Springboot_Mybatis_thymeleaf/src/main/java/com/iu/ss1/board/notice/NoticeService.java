@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.iu.ss1.board.BoardFileVO;
@@ -43,12 +44,20 @@ public class NoticeService implements BoardService {
 	}
 
 	@Override
+	@Transactional(rollbackFor = Exception.class)
 	public int setInsert(BoardVO boardVO, MultipartFile[] files) throws Exception {
 		
 		
 		int result= noticeMapper.setInsert(boardVO);
 		//레거시에선, request에서 뽑은 realPath-- webapp에 있었는데 이젠 statatic이 클래스패스로 ,,
 		String filePath="upload/notice/";
+		
+		//예외 발생 안할경우 대비해 강제로 예외 발생
+		if(result<1){
+			throw new Exception();
+	}
+		
+		
 		
 		
 		for(MultipartFile multipartFile : files) {
@@ -61,6 +70,7 @@ public class NoticeService implements BoardService {
 				boardFileVO.setFileName(fileName);
 				boardFileVO.setOgName(multipartFile.getOriginalFilename());
 				boardFileVO.setNum(boardVO.getNum());
+				
 				noticeMapper.setFileInsert(boardFileVO);
 		}
 		

@@ -47,7 +47,7 @@
 			style="resize: none; margin-bottom: 10px; text-align: center;"
 			class="form-control myCheck" rows="5" id="contents" name="contents"
 			th:utext="${vo.contents}"></textarea>
-		<h2 th:utext="${vo.contents}"></h2>
+		<h2 id="test" th:utext="${vo.contents}"></h2>
 	</div>
 
 
@@ -55,9 +55,19 @@
 	
 	<!-- <img th:src="classpath:/static/upload/notice/${vo.boardFiles[0].fileName}"> -->
 	
+	
+
+
+
 	<p th:each="boardFileVO : ${vo.BoardFiles}">
-	<a th:href="@{|/upload/${board}/${boardFileVO.fileName}|}" th:text=${boardFileVO.ogName}></a>
+<!-- 	<a th:href="@{|/upload/${board}/${boardFileVO.fileName}|}" th:text=${boardFileVO.ogName}></a> -->
+	<a th:href="@{./fileDown(fileName=${boardFileVO.fileName}, ogName=${boardFileVO.ogName})}" th:text=${boardFileVO.ogName}></a>
 	</p>
+	
+	
+	
+	
+	
 	
 	<p th:each="boardFileVO : ${vo.BoardFiles}">
 	<img th:src="@{|/upload/${board}/${boardFileVO.fileName}|}" style="width: 300px; height: auto;">
@@ -82,6 +92,9 @@
 
 
 	<script type="text/javascript">
+	let con = $("#test").text();
+	$("#contents").val(con);;
+	
 
 function removeHTML(text){
 	text = text.replace(/<br\/>/ig, "\n"); 

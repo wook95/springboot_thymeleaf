@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.iu.ss1.board.BoardVO;
 import com.iu.ss1.util.Pager;
@@ -18,6 +19,26 @@ public class NoticeController {
 
 	@Autowired
 	private NoticeService noticeService;
+	
+	@GetMapping("/notice/fileDown")
+	public ModelAndView fileDown(String fileName,String ogName)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("fileName", fileName);
+		mv.addObject("ogName",ogName); // 파라미터로 받거나, db에서 조회해도 된다
+		mv.addObject("filePath", "/upload/notice/");
+		
+		
+		mv.setViewName("fileDown");
+		
+		// fileDown이라는 bean먼저 찾고 없을시
+		// /fileDown.html 찾으러 간다.
+		// 지금은 @component로 Filedown이 빈 filedown이 되서 파일 다운 가능!
+		
+		
+		
+		return mv;
+	
+	}
 	
 	
 	

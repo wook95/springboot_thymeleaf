@@ -1,6 +1,7 @@
 package com.iu.ss1.board;
 
 import java.sql.Date;
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -29,8 +30,9 @@ public class BoardVO {
 	private String title;
 	private String writer;
 	private String contents;
-	private Date regdate;
+	private Date regDate;
 	private Long hit;
+	private List<BoardFileVO> boardFiles;
 	
 	
 }

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="./fragments/default :: head(|${board} select|)">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<div th:replace="./fragments/default :: nav"></div>
+	<div th:replace="./fragments/default :: jumbo"></div>
+
+
+
+
+
+
+	<table class="table" style="margin-bottom: 0px">
+		<thead class="table-dark">
+			<tr>
+				<th scope="col">num</th>
+				<th scope="col">title</th>
+				<th scope="col">writer</th>
+				<th scope="col">date</th>
+				<th scope="col">hit</th>
+
+
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th scope="row" th:text="${vo.num}">1</th>
+				<td th:text="${vo.title}"></td>
+				<!-- <td><a href="#">[[${vo.title}]]</a></td> -->
+				<td th:text="${vo.writer}"></td>
+				<td th:text="${vo.regDate}"></td>
+				<td th:text="${vo.hit}"></td>
+
+
+			</tr>
+
+		</tbody>
+	</table>
+	
+	
+	<div>
+		<textarea readonly="readonly"
+			style="resize: none; margin-bottom: 10px; text-align: center;"
+			class="form-control myCheck" rows="5" id="contents" name="contents"
+			th:utext="${vo.contents}"></textarea>
+		<h2 id="test" th:utext="${vo.contents}"></h2>
+	</div>
+
+
+	<div>
+	
+	<!-- <img th:src="classpath:/static/upload/notice/${vo.boardFiles[0].fileName}"> -->
+	
+	
+
+
+
+	<p th:each="boardFileVO : ${vo.BoardFiles}">
+<!-- 	<a th:href="@{|/upload/${board}/${boardFileVO.fileName}|}" th:text=${boardFileVO.ogName}></a> -->
+	<a th:href="@{./fileDown(fileName=${boardFileVO.fileName}, ogName=${boardFileVO.ogName})}" th:text=${boardFileVO.ogName}></a>
+	</p>
+	
+	
+	
+	
+	
+	
+	<p th:each="boardFileVO : ${vo.BoardFiles}">
+	<img th:src="@{|/upload/${board}/${boardFileVO.fileName}|}" style="width: 300px; height: auto;">
+	</p>
+	</div>
+
+
+
+
+
+
+
+	<div style="margin-bottom: 10px; text-align: center;">
+		<a th:href="@{./update(num=${vo.num})}" type="button" class="btn">update</a>
+		<a th:href="@{./delete(num=${vo.num})}" type="button" class="btn">delete</a>
+	</div>
+
+
+
+	<div th:replace="./fragments/default :: footer"></div>
+
+
+
+	<script type="text/javascript">
+	let con = $("#test").text();
+	$("#contents").val(con);;
+	
+
+function removeHTML(text){
+	text = text.replace(/<br\/>/ig, "\n"); 
+	text = text.replace(/<(\/)?([a-zA-Z]*)(\s[a-zA-Z]*=[^>]*)?(\s)*(\/)?>/ig, "");
+return text;
+}
+
+
+
+
+</script>
+
+</body>
+</html>

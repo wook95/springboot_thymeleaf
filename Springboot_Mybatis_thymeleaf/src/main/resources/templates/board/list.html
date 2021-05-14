@@ -10,8 +10,137 @@
 <div th:replace="./fragments/default :: nav"></div>
 <div th:replace="./fragments/default :: jumbo"></div>
 
+ 
+ <div class="container">
  <h1 >[[${board}]] list</h1>
+
+<table class="table">
+  <thead class="table-dark">
+    <tr>
+    	<th scope="col">num</th>
+    	<th scope="col">title</th>
+    	<th scope="col">writer</th>
+    	<th scope="col">date</th>
+    	<th scope="col">hit</th> 
+
+    	<th scope="col">idx</th>
+    	<th scope="col">count</th>
+    	<th scope="col">size</th>
+    	<th scope="col">even</th>
+    	<th scope="col">odd</th>
+     </tr>
+  </thead>
+  <tbody>
+  	 	<tr th:each="vo, state : ${list}">
+   			<th scope="row" th:text="${vo.num}">1</th>
+   			 <td><a href="#" th:href="@{select(num=${vo.num})}" th:text="${vo.title}">mark</a></td>
+   			<!-- <td><a href="#">[[${vo.title}]]</a></td> -->
+   			<td th:text="${vo.writer}">	</td>
+   	 		 <td th:text="${vo.regDate}">	</td> 
+   			<td th:text="${vo.hit}">	</td>  
+   			<td th:text="${state.index}">	</td>
+   		 	<td th:text="${state.count}">	</td> <!--  반복의 총 갯수  -->
+   			 <td th:text="${state.size}">	</td>
+   			<td th:text="${state.even}">	</td> <!-- 현재 반복의 짝  -->
+   			<td th:text="${state.odd}">	</td>  <!-- 현재 반복의 홀수 여부 -->
+ 
+   			
+   			
+	   </tr>
+	 
+  </tbody>
+</table>
+ 
+ 
+ <!-- 검색 form -->
+				<div class=" d-flex justify-content-start">
+			<div class="input-group align-items-center">
+				<form id="frm" th:action="@{list}" class="form-inline">
+					<input type="hidden" name="curPage" value="1" id="curPage">
+					<div class="input-group-prepend">
+						<select class="form-control" name="kind" id="kind"
+							th:value="${pager.kind}">
+							<option class="sel"
+								th:selected="${pager.kind}== 'Title'?true:false">Title</option>
+							<option class="sel"
+								th:selected="${pager.kind}=='Contents'?true:false">Contents</option>
+							<option class="sel"
+								th:selected="${pager.kind}=='Writer'?true:false">Writer</option>
+						</select>
+					</div>
+					<input type="text" class="form-control" name="search" id="search"
+						th:value="${pager.search}" placeholder="">
+					<div class="input-group-append">
+						<button class="btn btn-success" type="submit">Search</button>
+					</div>
+				</form>
+			</div>
+		</div>
+		
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+<a class="btn btn-primary" href="#" role="button" th:href="@{|/${board}/insert|}" style="margin-bottom: 5px">write</a>
+ <a class="btn btn-primary" href="#" role="button" th:href="@{|/${board}/fileDown|}" style="margin-bottom: 5px">write</a>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <!-- 페이지 밑 번호로 이동할수 있는 블럭  -->
+ <div class="container d-flex justify-content-center">
+  <ul class="pagination">
+  
+  
+    <li class="page-item">
+    	<a class="page-link pager" th:if="${pager.pre}" href="#" th:title="${pager.startNum-1}">Previous</a>
+    <!--  th:href="@{./list(curPage=${pager.startNum}-1)}"-->
+    	<span class="page-link" th:unless="${pager.pre}">Previous</span>
+    </li>
+    
+    
+    <li class="page-item" th:each="i : ${#numbers.sequence(pager.startNum,pager.lastNum)}">
+    <a class="page-link pager" th:text="${i}" href="#" th:title="${i}">1</a>
+    <!-- th:href="@{./list(curPage=${i})}" -->
+    </li>
+    
+    
+    
+    <li class="page-item" th:if="${pager.next}">
+    <a class="page-link pager" href="#"  th:title="${pager.lastNum+1}">Next</a>
+    </li>
+    <!--  th:href="@{./list(curPage=${pager.lastNum}+1)}" -->
+  </ul>
+</div>
+  
+  
+  
+  
+  
+  
+  
+  
 <div th:replace="./fragments/default :: footer"></div>
+</div>
+
+
+<script type="text/javascript" th:src="@{/js/boardSearch.js}"></script>
 
 </body>
 </html>

@@ -11,6 +11,12 @@
 insert member values(#{id},#{pw},#{name},#{email},#{phone})
 </insert>
 
+<insert id="setJoinFile" parameterType="MemberFileVO">
+	insert into memberFiles (id,fileName,ogName) values(#{id},#{fileName},#{ogName})
+</insert>
+
+
+
 <select id="getLogin" parameterType="MemberVO" resultType="MemberVO">
 select * from member
 where id=#{id} and pw=#{pw}

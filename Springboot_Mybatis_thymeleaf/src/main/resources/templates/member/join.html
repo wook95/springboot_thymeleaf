@@ -8,7 +8,70 @@
 
 <div th:replace="./fragments/default :: nav"></div>
 <div th:replace="./fragments/default :: jumbo"></div>
-<h1>Member Join Page</h1>
+
+
+
+
+
+
+<form action="./join" method="post">
+
+
+
+<div class="input-group mb-3"  style=" width: 300px;">
+  <input name="id" type="text" class="form-control" placeholder="id" aria-label="Recipient's username" aria-describedby="button-addon2" >
+</div>
+
+
+<div class="input-group mb-3" style=" width: 300px;">
+  <input name="pw" type="text" class="form-control" placeholder="password" aria-label="Recipient's username" aria-describedby="button-addon2">
+</div>
+
+<!-- <div class="input-group mb-3" style=" width: 300px;">
+  <input name="pw1" type="text" class="form-control" placeholder="password" aria-label="Recipient's username" aria-describedby="button-addon2">
+</div> -->
+
+<div class="input-group mb-3"  style=" width: 300px;">
+  <input name="name" type="text" class="form-control" placeholder="name" aria-label="Recipient's username" aria-describedby="button-addon2" >
+</div>
+
+<div class="input-group mb-3"  style=" width: 300px;">
+  <input name="email" type="text" class="form-control" placeholder="email" aria-label="Recipient's username" aria-describedby="button-addon2" >
+</div>
+
+<div class="input-group mb-3"  style=" width: 300px;">
+  <input name="phone" type="text" class="form-control" placeholder="phone" aria-label="Recipient's username" aria-describedby="button-addon2" >
+</div>
+
+<div>
+<input type="file" name="avatar" id="avatar">
+</div>
+
+<input type="submit" id="btn" value="JOIN" class="button">
+</form>
+
+
+
+
+
+
+
+
+
+
+<div th:replace="./fragments/default :: footer"></div>
+
+
+
+
+
+
+
+
+
+
+
+
 <div th:replace="./fragments/default :: footer"></div>
 
 

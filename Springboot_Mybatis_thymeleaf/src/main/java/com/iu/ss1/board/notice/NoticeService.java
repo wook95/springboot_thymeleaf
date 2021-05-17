@@ -11,7 +11,7 @@ import com.iu.ss1.board.BoardFileVO;
 import com.iu.ss1.board.BoardService;
 import com.iu.ss1.board.BoardVO;
 import com.iu.ss1.util.Pager;
-import com.iu.ss1.util.fileManager;
+import com.iu.ss1.util.FileManager;
 
 @Service
 public class NoticeService implements BoardService {
@@ -19,7 +19,7 @@ public class NoticeService implements BoardService {
 	@Autowired
 	private NoticeMapper noticeMapper;
 	@Autowired
-	private fileManager fileManager;
+	private FileManager fileManager;
 	
 
 	@Override

@@ -39,21 +39,24 @@ body {font-family: 'Wemakeprice-Regular'};
         <li class="nav-item">
           <a class="nav-link" th:href="@{/notice/list}">Notice</a>
         </li>
-        <li class="nav-item">
+            <li class="nav-item">
           <a class="nav-link" th:href="@{/qna/list}">QnA</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" th:href="@{/member/join}">Join</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" th:href="@{/member/login}">Login</a>
-        </li>
+       
         
       </ul>
-      <form class="d-flex">
+      
+      
+      <div class="d-flex">
+       <a class="nav-link"  th:href="@{/member/join}">Join</a>
+       <a class="nav-link" th:href="@{/member/myPage}" style="color: white;">My Page</a>
+     <a class="nav-link" th:href="@{/member/login}" style="color: white;">Login</a>
+              <a class="nav-link" th:href="@{/member/logout}"style="color: white;">Logout</a>
+      </div>
+     <!--  <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+      </form> -->
     </div>
   </div>
 </nav>
@@ -67,6 +70,13 @@ body {font-family: 'Wemakeprice-Regular'};
         <button class="btn btn-primary btn-lg" type="button">Example button</button>
       </div>
 	</div>
+
+
+
+
+
+
+
 
 	<div th:insert="./fragments/frag :: copy">
 	</div>

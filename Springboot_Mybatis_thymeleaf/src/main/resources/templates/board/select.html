@@ -83,6 +83,7 @@
 	<div style="margin-bottom: 10px; text-align: center;">
 		<a th:href="@{./update(num=${vo.num})}" type="button" class="btn">update</a>
 		<a th:href="@{./delete(num=${vo.num})}" type="button" class="btn">delete</a>
+		<a th:if="${board}==qna" th:href="@{./reply(num=${vo.num})}" type="button" class="btn">reply</a>
 	</div>
 
 

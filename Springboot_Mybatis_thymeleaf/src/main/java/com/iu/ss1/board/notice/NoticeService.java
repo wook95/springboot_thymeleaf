@@ -13,6 +13,8 @@ import com.iu.ss1.board.BoardVO;
 import com.iu.ss1.util.FileManager;
 import com.iu.ss1.util.Pager;
 
+import com.iu.ss1.util.FileManager;
+
 
 @Service
 public class NoticeService implements BoardService {

@@ -21,7 +21,6 @@ public class HomeController {
 		boardVO.setNum(1L);
 		boardVO.setTitle("tt1");
 		boardVO.setWriter("ww");
-		System.out.println(boardVO.toString());
 		return "index";
 	}
 	

@@ -2,14 +2,17 @@
 <!DOCTYPE configuration
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
-  
-  <configuration>
-  
- <typeAliases>
- 	<typeAlias type="com.iu.ss1.board.BoardVO" alias="BoardVO"/>
- 	<typeAlias type="com.iu.ss1.board.notice.NoticeVO" alias="NoticeVO"/>
- 	<typeAlias type="com.iu.ss1.util.Pager" alias="Pager"/>
- 	<typeAlias type="com.iu.ss1.board.BoardFileVO" alias="BoardFileVO"/>
- </typeAliases>
-  
-  </configuration>
+
+<configuration>
+
+	<typeAliases>
+		<typeAlias type="com.iu.ss1.board.BoardVO" alias="BoardVO" />
+		<typeAlias type="com.iu.ss1.board.BoardFileVO" alias="BoardFileVO" />
+		<typeAlias type="com.iu.ss1.member.MemberVO" alias="MemberVO" />
+		<typeAlias type="com.iu.ss1.member.MemberFileVO" alias="MemberFileVO" />
+		<typeAlias type="com.iu.ss1.board.notice.NoticeVO" alias="NoticeVO" />
+		<typeAlias type="com.iu.ss1.board.qna.QnaVO" alias="QnaVO" />
+		<typeAlias type="com.iu.ss1.util.Pager" alias="Pager" />
+	</typeAliases>
+
+</configuration>

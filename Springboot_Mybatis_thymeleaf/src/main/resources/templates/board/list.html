@@ -33,8 +33,14 @@
   <tbody>
   	 	<tr th:each="vo, state : ${list}">
    			<th scope="row" th:text="${vo.num}">1</th>
-   			 <td><a href="#" th:href="@{select(num=${vo.num})}" th:text="${vo.title}">mark</a></td>
-   			<!-- <td><a href="#">[[${vo.title}]]</a></td> -->
+   			
+   			 <td th:if="${board}!='notice'">
+   			 <span th:if="${vo.depth}!=0" th:each="i : ${#numbers.sequence(1,vo.depth)}">ㄴ</span>
+   			 <a href="#" th:href="@{select(num=${vo.num})}" th:text="${vo.title}">mark</a></td>
+   			 
+   			 <td th:unless="${board}!='notice'">
+   			 <a href="#" th:href="@{select(num=${vo.num})}" th:text="${vo.title}">mark</a></td>
+   			 
    			<td th:text="${vo.writer}">	</td>
    	 		 <td th:text="${vo.regDate}">	</td> 
    			<td th:text="${vo.hit}">	</td>  
@@ -53,7 +59,7 @@
  
  
  <!-- 검색 form -->
-				<div class=" d-flex justify-content-start">
+		<div class=" d-flex justify-content-start">
 			<div class="input-group align-items-center">
 				<form id="frm" th:action="@{list}" class="form-inline">
 					<input type="hidden" name="curPage" value="1" id="curPage">
@@ -76,6 +82,7 @@
 				</form>
 			</div>
 		</div>
+		<!-- 검색 form -->
 		
  
  
@@ -89,9 +96,11 @@
  
  
  
- 
-<a class="btn btn-primary" href="#" role="button" th:href="@{|/${board}/insert|}" style="margin-bottom: 5px">write</a>
+ <div th:if="${session.member != null}">
+<a class="btn btn-primary" th:if="${board}=='notice' and ${session.member.id}=='admin'" href="#" role="button" th:href="@{|/${board}/insert|}" style="margin-bottom: 5px">write</a>
+<a class="btn btn-primary" th:if="${board}!='notice'" href="#" role="button" th:href="@{|/${board}/insert|}" style="margin-bottom: 5px">write</a>
 
+</div>
   
   
   

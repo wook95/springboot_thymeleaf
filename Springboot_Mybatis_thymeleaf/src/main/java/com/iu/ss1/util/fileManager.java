@@ -13,7 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 
 @Component
-public class fileManager {
+public class FileManager {
 	
 	@Autowired
 	private ResourceLoader resourceLoader;

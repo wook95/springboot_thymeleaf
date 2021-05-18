@@ -1,5 +1,6 @@
 package com.iu.ss1.board.qna;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +28,12 @@ public class QnaController {
 	
 	@GetMapping("/qna/list")
 	public String getQnaList(Pager pager, Model model)throws Exception{
-		List<BoardVO> ar = qnaService.getList(pager);
 		
+		if(pager.getCurPage()%2==0) {
+			throw new SQLException();
+		}
+		
+		List<BoardVO> ar = qnaService.getList(pager);
 		model.addAttribute("list", ar);
 		model.addAttribute("pager", pager);
 		return "board/list";

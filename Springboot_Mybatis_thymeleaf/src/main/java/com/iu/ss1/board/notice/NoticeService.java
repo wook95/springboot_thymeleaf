@@ -36,6 +36,12 @@ public class NoticeService implements BoardService {
 		pager.makeRow();
 		
 		pager.makeNum(getTotalCount(pager));
+		
+//		if(pager.getCurPage()%2==0) {
+//			throw new Exception();
+//		}
+		
+		
 		return noticeMapper.getList(pager);
 		
 	}

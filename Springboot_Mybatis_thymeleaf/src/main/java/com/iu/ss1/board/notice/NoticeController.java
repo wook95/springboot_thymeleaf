@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -48,6 +49,7 @@ public class NoticeController {
 	@GetMapping("/notice/list")
 	public String getNoticeList(Model model,Pager pager)throws Exception{
 		
+	
 		List<BoardVO> ar = noticeService.getList(pager);
 		model.addAttribute("list",ar);
 		model.addAttribute("pager",pager);
@@ -142,5 +144,25 @@ public class NoticeController {
 	}
 	
 	
+	
+//	@ExceptionHandler(예외객체명.class)
+//	public String ex1() {
+//		
+//	}
+//	@ExceptionHandler(ArithmeticException.class)
+//	public String getMath(Model model) {
+//		
+//		model.addAttribute("msg", "수학 오류 발생");
+//		return "error/500";
+//	}
+	
+//	@ExceptionHandler(Throwable.class)
+//	public String getException(Model model) {
+//		
+//		model.addAttribute("msg", "에러가 지속되면 관리자에게 문의하세요");
+//		
+//		return "error/500";
+//	}
+//	
 	
 }

@@ -26,9 +26,9 @@ public class Card {
 		return obj;
 	}
 	
-	@AfterReturning("execution(* com.iu.ss1.board.notice.NoticeService.get*(..))")
-	public void selectCheck() {
-		System.out.println("select query 정상 종료");
-	}
-	
+//	@AfterReturning("execution(* com.iu.ss1.board.notice.NoticeService.get*(..))")
+//	public void selectCheck() {
+//		System.out.println("select query 정상 종료");
+//	}
+//	
 }

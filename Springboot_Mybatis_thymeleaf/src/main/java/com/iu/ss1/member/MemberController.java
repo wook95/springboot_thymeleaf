@@ -28,6 +28,7 @@ public class MemberController {
 		System.out.println(avatar);
 		int result= memberService.setJoin(memberVO,avatar);
 		
+		
 		return "redirect:../";
 	}
 	

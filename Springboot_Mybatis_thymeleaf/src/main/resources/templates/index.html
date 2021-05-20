@@ -16,6 +16,16 @@
 <div th:replace="./fragments/default :: jumbo"></div>
 
 
+	<!-- message 꺼낼땐 #{message의 키 값} -->
+
+
+		<div style="display: flex; justify-content: center;">
+		
+
+		<h1 th:text="#{hello}"></h1>
+		<h1 th:text="#{user.welcome(${user},${msg})}"></h1>
+		<h1 th:text="|user : ${session.member}|"></h1>
+		</div>
 
 
 	<footer th:replace="./fragments/default :: footer" ></footer>

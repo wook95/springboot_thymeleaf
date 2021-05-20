@@ -21,6 +21,11 @@ public class HomeController {
 		boardVO.setNum(1L);
 		boardVO.setTitle("tt1");
 		boardVO.setWriter("ww");
+		
+		model.addAttribute("user", "dustn");
+		model.addAttribute("msg", "test");
+		
+		
 		return "index";
 	}
 	

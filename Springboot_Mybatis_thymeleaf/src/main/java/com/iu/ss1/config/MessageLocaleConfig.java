@@ -37,29 +37,29 @@ public class MessageLocaleConfig implements WebMvcConfigurer{
 	
 	//interceptor
 	
-//	@Bean
-//	public LocaleChangeInterceptor localeChangeInterceptor() {
-//		LocaleChangeInterceptor changeInterceptor = new LocaleChangeInterceptor();
-//		changeInterceptor.setParamName("lang");
-//		//파라미터에 따라 언어 구분
-//		//url?lang=en
-//		
-//		
-//		return localeChangeInterceptor();
-//		
-//		
-//	}
-//	
-//	@Override
-//	public void addInterceptors(InterceptorRegistry registry) {
-//
-//		registry.addInterceptor(localeChangeInterceptor())
-//				.addPathPatterns("/**");
-//		
-//		
-//		// TODO Auto-generated method stub
-//	}
-//	
+	
+	public LocaleChangeInterceptor localeChangeInterceptor() {
+		LocaleChangeInterceptor localeChangeInterceptor = new LocaleChangeInterceptor();
+		localeChangeInterceptor.setParamName("lang");
+		//파라미터에 따라 언어 구분
+		//url?lang=en
+		
+		
+		return localeChangeInterceptor;
+		
+		
+	}
+
+	@Override
+	public void addInterceptors(InterceptorRegistry registry) {
+
+		registry.addInterceptor(localeChangeInterceptor())
+		.addPathPatterns("/**");
+		
+		
+		// TODO Auto-generated method stub
+	}
+	
 	
 	
 	

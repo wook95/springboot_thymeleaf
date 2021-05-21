@@ -2,6 +2,7 @@ package com.iu.ss1.member;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.Errors;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.iu.ss1.board.BoardFileVO;
@@ -15,6 +16,44 @@ public class MemberService {
 	private MemberMapper memberMapper;
 	@Autowired
 	private FileManager fileManager; 
+	
+	
+	public boolean memberError(MemberVO memberVO,Errors errors)throws Exception{
+		boolean result = false;
+		
+		//기본 제공 검증
+//		if(errors.hasErrors()) {
+//			result=true;
+//		}
+		result = errors.hasErrors();
+		
+		
+		
+		//paassword가 일치여부 검증
+		if(!memberVO.getPw().equals(memberVO.getPw1())) {
+			errors.rejectValue("pw1","memberVO.password.notEqual");
+						//form path, properties의 키 값
+			result = true;
+		}
+		if(memberVO.getId().equals("admin")
+				||
+			memberVO.getId().equals("administrator")) {
+			errors.rejectValue("id", "memberVO.id.admin");
+			result = true;
+		}
+		if(memberMapper.getSelectId(memberVO)!=null) {
+			errors.rejectValue("id", "memberVO.id.duplicate");
+			result = true;
+		}
+		//admin, administrator로 가입하면 안된다고 메세지 고
+		
+		
+		return result;
+	}
+	
+	
+	
+	
 	
 	public int setJoin(MemberVO memberVO,MultipartFile file)throws Exception{
 		
@@ -54,4 +93,9 @@ public class MemberService {
 		return memberMapper.setDelete(memberVO);
 		
 	}
+	public MemberVO getSelectId(MemberVO memberVO)throws Exception{
+		return memberMapper.getSelectId(memberVO);
+	}
+	
+	
 }

@@ -16,6 +16,6 @@ public interface MemberMapper {
 	
 	public int setUpdate(MemberVO memberVO)throws Exception;
 	public int setDelete(MemberVO memberVO)throws Exception;
-	
+	public MemberVO getSelectId(MemberVO memberVO)throws Exception;
 	
 }

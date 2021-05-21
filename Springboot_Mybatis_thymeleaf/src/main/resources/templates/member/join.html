@@ -14,33 +14,38 @@
 
 
 
-<form action="./join" method="post">
+<form action="./join" th:action="@{./join}" th:object="${memberVO}" method="post" enctype="multipart/form-data">
 
 
 
 <div class="input-group mb-3"  style=" width: 300px;">
-  <input name="id" type="text" class="form-control" placeholder="id" aria-label="Recipient's username" aria-describedby="button-addon2" >
+  <input th:field="*{id}" name="id" type="text" class="form-control" placeholder="id" aria-label="Recipient's username" aria-describedby="button-addon2" >
+	<p th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></p>
 </div>
 
 
 <div class="input-group mb-3" style=" width: 300px;">
-  <input name="pw" type="text" class="form-control" placeholder="password" aria-label="Recipient's username" aria-describedby="button-addon2">
+  <input th:field="*{pw}" name="pw" type="text" class="form-control" placeholder="password" aria-label="pw" aria-describedby="button-addon2">
+	<p th:if="${#fields.hasErrors('pw')}" th:errors="*{pw}"></p>
 </div>
 
-<!-- <div class="input-group mb-3" style=" width: 300px;">
-  <input name="pw1" type="text" class="form-control" placeholder="password" aria-label="Recipient's username" aria-describedby="button-addon2">
-</div> -->
+ <div class="input-group mb-3" style=" width: 300px;">
+  <input  th:field="*{pw1}" name="pw1" type="text" class="form-control" placeholder="password confirm" aria-label="pw confirm" aria-describedby="button-addon2">
+	<p th:if="${#fields.hasErrors('pw1')}" th:errors="*{pw1}"></p>
+</div> 
 
+ <div class="input-group mb-3"  style=" width: 300px;">
+  <input th:field="*{name}" name="name" type="text" class="form-control" placeholder="name" aria-label="name" aria-describedby="button-addon2" >
+  <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+</div>
+ 
 <div class="input-group mb-3"  style=" width: 300px;">
-  <input name="name" type="text" class="form-control" placeholder="name" aria-label="Recipient's username" aria-describedby="button-addon2" >
+  <input th:field="*{email}" name="email" type="text" class="form-control" placeholder="email" aria-label="email" aria-describedby="button-addon2" >
+	<p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
 </div>
 
 <div class="input-group mb-3"  style=" width: 300px;">
-  <input name="email" type="text" class="form-control" placeholder="email" aria-label="Recipient's username" aria-describedby="button-addon2" >
-</div>
-
-<div class="input-group mb-3"  style=" width: 300px;">
-  <input name="phone" type="text" class="form-control" placeholder="phone" aria-label="Recipient's username" aria-describedby="button-addon2" >
+  <input name="phone" type="text" class="form-control" placeholder="phone" aria-label="phone" aria-describedby="button-addon2" >
 </div>
 
 <div>
@@ -49,22 +54,6 @@
 
 <input type="submit" id="btn" value="JOIN" class="button">
 </form>
-
-
-
-
-
-
-
-
-
-
-<div th:replace="./fragments/default :: footer"></div>
-
-
-
-
-
 
 
 

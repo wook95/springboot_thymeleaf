@@ -8,8 +8,14 @@
 
 
 <insert id="setJoin" parameterType="MemberVO" >
-insert member values(#{id},#{pw},#{name},#{email},#{phone})
+insert member values(#{username},#{password},#{name},#{email},#{phone},#{enabled})
 </insert>
+
+<insert id="setMemberRole" parameterType="java.util.Map">
+insert into member_role (userName,id)
+values (#{userName},(select id from role where roleName=#{roleName}))
+</insert>
+
 
 <insert id="setJoinFile" parameterType="MemberFileVO">
 	insert into memberFiles (id,fileName,ogName) values(#{id},#{fileName},#{ogName})
@@ -19,19 +25,19 @@ insert member values(#{id},#{pw},#{name},#{email},#{phone})
 
 <select id="getLogin" parameterType="MemberVO" resultType="MemberVO">
 select * from member
-where id=#{id} and pw=#{pw}
+where username=#{username} and password=#{password}
 </select>
 
 <update id="setUpdate" parameterType="MemberVO">
-update member set pw=#{pw},name=#{name},email=#{email},phone=#{phone} where id=#{id}
+update member set password=#{password},name=#{name},email=#{email},phone=#{phone} where username=#{username}
 </update>
 
 <delete id="setDelete" parameterType="MemberVO">
-delete from member where id=#{id}
+delete from member where username=#{username}
 </delete>
 
 <select id="getSelectId" parameterType="MemberVO" resultType="MemberVO">
-select * from member where id=#{id}
+select * from member where username=#{username}
 </select>
 
 

@@ -1,5 +1,7 @@
 package com.iu.ss1.member;
 
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -17,5 +19,8 @@ public interface MemberMapper {
 	public int setUpdate(MemberVO memberVO)throws Exception;
 	public int setDelete(MemberVO memberVO)throws Exception;
 	public MemberVO getSelectId(MemberVO memberVO)throws Exception;
+	
+	
+	public int setMemberRole(Map<String, String>map)throws Exception;
 	
 }

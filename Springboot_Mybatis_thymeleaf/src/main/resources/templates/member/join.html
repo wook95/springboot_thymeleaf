@@ -19,14 +19,14 @@
 
 
 <div class="input-group mb-3"  style=" width: 300px;">
-  <input th:field="*{id}" name="id" type="text" class="form-control" placeholder="id" aria-label="Recipient's username" aria-describedby="button-addon2" >
-	<p th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></p>
+  <input th:field="*{username}" name="username" type="text" class="form-control" placeholder="id" aria-label="Recipient's username" aria-describedby="button-addon2" >
+	<p th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
 </div>
 
 
 <div class="input-group mb-3" style=" width: 300px;">
-  <input th:field="*{pw}" name="pw" type="text" class="form-control" placeholder="password" aria-label="pw" aria-describedby="button-addon2">
-	<p th:if="${#fields.hasErrors('pw')}" th:errors="*{pw}"></p>
+  <input th:field="*{password}" name="password" type="text" class="form-control" placeholder="password" aria-label="pw" aria-describedby="button-addon2">
+	<p th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
 </div>
 
  <div class="input-group mb-3" style=" width: 300px;">

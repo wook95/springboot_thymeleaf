@@ -41,6 +41,10 @@ public class WebSecurityConfig extends  WebSecurityConfigurerAdapter{
 			.anyRequest().authenticated()
 			.and()
 		.formLogin()
+			//로그인 페이지 따로 안 만들어도 기본 폼으로 이동하는데
+			//내가 만든 폼으로 이동하고 싶으면 이렇게 !
+			//어서라이즈 리퀘스트 한덩어리,, 폼 로그인은 다르 덩어리
+			//and 쓰기 싫으면 http. 쓰면 된다
 			.loginPage("/member/login")
 			.permitAll()
 			;

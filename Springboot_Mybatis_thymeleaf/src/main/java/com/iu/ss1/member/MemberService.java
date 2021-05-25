@@ -30,19 +30,19 @@ public class MemberService {
 		
 		
 		//paassword가 일치여부 검증
-		if(!memberVO.getPw().equals(memberVO.getPw1())) {
+		if(!memberVO.getPassword().equals(memberVO.getPw1())) {
 			errors.rejectValue("pw1","memberVO.password.notEqual");
 						//form path, properties의 키 값
 			result = true;
 		}
-		if(memberVO.getId().equals("admin")
+		if(memberVO.getUsername().equals("admin")
 				||
-			memberVO.getId().equals("administrator")) {
-			errors.rejectValue("id", "memberVO.id.admin");
+			memberVO.getUsername().equals("administrator")) {
+			errors.rejectValue("username", "memberVO.username.admin");
 			result = true;
 		}
 		if(memberMapper.getSelectId(memberVO)!=null) {
-			errors.rejectValue("id", "memberVO.id.duplicate");
+			errors.rejectValue("username", "memberVO.username.duplicate");
 			result = true;
 		}
 		//admin, administrator로 가입하면 안된다고 메세지 고
@@ -72,7 +72,7 @@ public class MemberService {
 		String fileName=fileManager.save(file, filePath);
 			MemberFileVO memberFileVO = new MemberFileVO();
 			memberFileVO.setFileName(fileName);
-			memberFileVO.setId(memberVO.getId());
+			memberFileVO.setId(memberVO.getUsername());
 			memberFileVO.setOgName(file.getOriginalFilename());
 			result = memberMapper.setJoinFile(memberFileVO);
 			
